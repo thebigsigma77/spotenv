@@ -21,5 +21,8 @@ export default defineConfig({
 	loader: {
 		'.json': 'json', // ⬅ transforms JSON into normal ESM object
 	},
+	banner: {
+		js: '#!/usr/bin/env node',
+	},
 	outExtension: () => ({ js: '.js' }), // Force .js instead of .mjs
 });
