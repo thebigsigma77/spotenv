@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { resolve } from 'node:path';
 import chalk from 'chalk';
 import ora from 'ora';
