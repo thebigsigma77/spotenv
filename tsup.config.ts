@@ -10,7 +10,14 @@ export default defineConfig({
 	bundle: true,
 	dts: false,
 	minify: true,
-	external: ['fs/promises', 'path', 'commander', '@dotenvx/dotenvx'],
+	external: [
+		'fs/promises',
+		'path',
+		'commander',
+		'@babel/parser',
+		'@babel/types',
+		'@babel/traverse',
+	],
 	loader: {
 		'.json': 'json', // ⬅ transforms JSON into normal ESM object
 	},
