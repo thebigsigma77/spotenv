@@ -1,22 +1,22 @@
 {
-	"name": "dotxx",
-	"version": "0.9.8",
+	"name": "spotenv",
+	"version": "0.9.0",
 	"type": "module",
 	"bin": {
-		"dotx": "dist/cli.js"
+		"spotenv": "dist/cli.js"
 	},
 	"keywords": [
 		"cli"
 	],
 	"repository": {
-		"url": "https://github.com/Silent-Watcher/dotx"
+		"url": "https://github.com/Silent-Watcher/spotenv"
 	},
 	"author": {
 		"email": "backendwithali@gmail.com",
 		"name": "Ali nazari"
 	},
 	"license": "MIT",
-	"description": "",
+	"description": "Scan project for environment variable usage and generate .env.example",
 	"scripts": {
 		"tsc": "tsc",
 		"dev": "tsx --watch src/cli.ts",
@@ -42,6 +42,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.1.4",
 		"@dotenvx/dotenvx": "^1.48.4",
+		"@types/babel__traverse": "^7.28.0",
 		"@types/command-exists": "^1.2.3",
 		"cz-conventional-changelog": "^3.3.0",
 		"del-cli": "^6.0.0",
@@ -53,7 +54,11 @@
 		"vitest": "^3.2.4"
 	},
 	"dependencies": {
-		"command-exists": "^1.2.9",
-		"commander": "^14.0.0"
+		"@babel/parser": "^7.28.0",
+		"@babel/traverse": "^7.28.0",
+		"chalk": "^5.5.0",
+		"commander": "^14.0.0",
+		"fast-glob": "^3.3.3",
+		"ora": "^8.2.0"
 	}
 }

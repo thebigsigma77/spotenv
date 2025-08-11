@@ -1,0 +1,25 @@
+import { Command } from 'commander';
+import { version } from '../../package.json';
+import { DEFAULT_IGNORE } from './constants';
+
+export function initialProgram(): Command {
+	const program = new Command();
+	program
+		.name('spotenv')
+		.description(
+			'Scan project for environment variable usage and generate .env.example',
+		)
+		.version(version)
+		.showHelpAfterError()
+		.requiredOption('-d, --dir <dir>', 'project directory to scan')
+		.option('-o, --out <file>', 'path for output file', '.env.example')
+		.option('-w, --watch', 'watch files and auto-regenerate', false)
+		.option(
+			'--ignore <patterns...>',
+			'glob ignore patterns',
+			DEFAULT_IGNORE,
+		)
+		.parse(process.argv);
+
+	return program;
+}
