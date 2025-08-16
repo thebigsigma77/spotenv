@@ -2,6 +2,7 @@
 
 import { resolve } from 'node:path';
 import chalk from 'chalk';
+import chokidar from 'chokidar';
 import ora from 'ora';
 import { DEFAULT_IGNORE } from './utils/constants';
 import { initialProgram } from './utils/program';
@@ -45,7 +46,45 @@ async function main() {
 		}
 	}
 
-	await runScanAndWrite();
+	if (watchMode) {
+		console.log(chalk.blue('Watching for file changes...'));
+		const watcher = chokidar.watch('.', {
+			ignored: [
+				...ignorePatterns,
+				(path, stats) =>
+					stats?.isFile() &&
+					!path.endsWith('.js') &&
+					!path.endsWith('.ts') &&
+					!path.endsWith('.mts') &&
+					!path.endsWith('.mjs') &&
+					!path.endsWith('.jsx') &&
+					!path.endsWith('.tsx'),
+			],
+			cwd: directoryToScan,
+			ignoreInitial: false,
+			awaitWriteFinish: { stabilityThreshold: 300 },
+		});
+
+		const debounced = (() => {
+			let t: NodeJS.Timeout | null = null;
+			return (fn: () => void, ms = 500) => {
+				if (t) clearTimeout(t);
+				t = setTimeout(fn, ms);
+			};
+		})();
+
+		watcher.on('all', (_event, _path) => {
+			debounced(async () => {
+				try {
+					await runScanAndWrite();
+				} catch (error) {
+					console.error('Error in runScanAndWrite:', error);
+				}
+			}, 400);
+		});
+	} else {
+		await runScanAndWrite();
+	}
 }
 
 main();

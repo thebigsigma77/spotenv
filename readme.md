@@ -1,12 +1,30 @@
 <div align="center">
   <img src="assets/spotenv.png" alt="spotenv" width="200" height="200">
-</div>
 
-# spotenv
+  <h1>spotenv</h1>
+
+ <p>
+    <strong>Spotenv is a small, practical CLI tool that scans your project source code (JS/TS/JSX/TSX) to find environment variable usages. It produces a `.env.example` file containing the discovered keys, helpful comments about where they are used and whether a default was detected — **without** writing any secret or literal values from source.
+   </strong>
+  </p>
+
+  <p>
+	<a href="#-features">features</a> •
+	<a href="#-Installation">Installation</a> •
+	<a href="#-Usage">Usage</a>
+  </p>
+
+
+  <p>
+    <a href="https://github.com/Silent-Watcher/spotenv/blob/master/LICENSE">
+      <img src="https://img.shields.io/github/license/Silent-Watcher/spotenv?color=#2fb64e"license">
+    </a>
+  </p>
+
+</div>
 
 > **spotenv** — scan a JavaScript/TypeScript codebase for environment variable usage and generate a **safe** `.env.example` file.
 
-Spotenv is a small, practical CLI tool that scans your project source code (JS/TS/JSX/TSX) to find environment variable usages like `process.env.FOO`, `process.env['FOO']`, destructured patterns (`const { FOO } = process.env`) and `import.meta.env.FOO` (Vite). It produces a `.env.example` file containing the discovered keys, helpful comments about where they are used and whether a default was detected — **without** writing any secret or literal values from source.
 
 ---
 
@@ -173,3 +191,15 @@ Contributions welcome! Please open issues for feature requests or bugs.
 ## License
 
 MIT — see `LICENSE` for details.
+
+---
+
+<div align="center">
+  <p>
+    <sub>Built with ❤️ by <a href="https://github.com/Silent-Watcher" target="_blank">Ali Nazari</a>, for developers.</sub>
+  </p>
+  <p>
+    <a href="https://github.com/Silent-Watcher/spotenv">⭐ Star us on GitHub</a> •
+    <a href="https://www.linkedin.com/in/alitte/">🐦 Follow on Linkedin</a>
+  </p>
+</div>
