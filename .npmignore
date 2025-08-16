@@ -20,6 +20,12 @@ biome.json
 .husky
 .github
 
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+
+LICENSE
+readme.md
+
 .env.keys
 .nvmrc
 env.json
