@@ -1,12 +1,20 @@
 {
 	"name": "spotenv",
-	"version": "0.10.4",
+	"version": "0.10.5",
 	"type": "module",
 	"bin": {
 		"spotenv": "dist/cli.js"
 	},
 	"keywords": [
-		"cli"
+		"cli",
+		"env-parser",
+		"env-loader",
+		"environment-variables",
+		"env",
+		"config-management",
+		"config-loader",
+		"ast-parsing",
+		"ast"
 	],
 	"repository": {
 		"url": "https://github.com/Silent-Watcher/spotenv"
