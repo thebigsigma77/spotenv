@@ -3,11 +3,6 @@
 
   <h1>spotenv</h1>
 
- <p>
-    <strong>Spotenv is a small, practical CLI tool that scans your project source code (JS/TS/JSX/TSX) to find environment variable usages. It produces a `.env.example` file containing the discovered keys, helpful comments about where they are used and whether a default was detected — **without** writing any secret or literal values from source.
-   </strong>
-  </p>
-
   <p>
 	<a href="#-features">features</a> •
 	<a href="#-Installation">Installation</a> •
