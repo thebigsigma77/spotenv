@@ -1,10 +1,11 @@
-import type { PathLike } from 'node:fs';
+import { existsSync, type PathLike } from 'node:fs';
 import type { FileHandle } from 'node:fs/promises';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 import type { ParseResult } from '@babel/parser';
 import { parse } from '@babel/parser';
 import * as t from '@babel/types';
+import { DEFAULT_TARGET_ENV_EXAMPLE_FILE } from './constants';
 
 export function parseFileToAst(sourceCode: string): ParseResult {
 	return parse(sourceCode, {
@@ -59,4 +60,21 @@ export function tryExtractDefaultFromParent(path: any): string | null {
 export async function outputFile(file: PathLike | FileHandle, data: string) {
 	await mkdir(dirname(String(file)), { recursive: true });
 	await writeFile(file, data, { encoding: 'utf-8' });
+}
+
+export function doesEnvExampleFileExists(targetAddr?: string): {
+	result: boolean;
+	at: string;
+} {
+	let envExampleExists = false;
+	if (!targetAddr) {
+		targetAddr = DEFAULT_TARGET_ENV_EXAMPLE_FILE;
+	}
+
+	envExampleExists = existsSync(targetAddr);
+
+	return {
+		result: envExampleExists,
+		at: targetAddr,
+	};
 }

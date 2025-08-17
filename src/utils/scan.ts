@@ -29,6 +29,7 @@ export async function scanProject(
 
 	for (const file of foundedFiles) {
 		let content: string | undefined;
+		if (file.endsWith('.d.ts')) continue;
 		try {
 			content = await readFile(file, 'utf-8');
 		} catch (error) {

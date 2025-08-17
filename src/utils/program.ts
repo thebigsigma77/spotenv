@@ -15,6 +15,11 @@ export function initialProgram(): Command {
 		.option('-o, --out <file>', 'path for output file', '.env.example')
 		.option('-w, --watch', 'watch files and auto-regenerate', false)
 		.option(
+			'-m, --merge',
+			'merge with existing .env.example (keep existing keys)',
+			false,
+		)
+		.option(
 			'--ignore <patterns...>',
 			'glob ignore patterns',
 			DEFAULT_IGNORE,
